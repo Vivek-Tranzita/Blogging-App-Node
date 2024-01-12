@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head') %>
+  <title>Signin</title>
+
+  <!-- Include Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+
+  <%- include('./partials/nav') %>
+
+  <div class="container mx-auto mt-8">
+    <form action="/user/signin" method="post" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email address</label>
+        <input type="email" name="email" class="w-full border rounded-md py-2 px-3" id="email" aria-describedby="emailHelp" />
+        <div id="emailHelp" class="text-sm text-gray-500">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+        <input name="password" type="password" class="w-full border rounded-md py-2 px-3" id="password" />
+      </div>
+      <div class="mb-4">
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Include Tailwind CSS (optional if not added via CDN) -->
+  <!-- <script src="path/to/tailwind.min.js"></script> -->
+
+  <%- include('./partials/scripts') %>
+</body>
+
+</html>

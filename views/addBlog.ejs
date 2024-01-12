@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head') %>
+  <title>Add New Blog</title>
+
+  <!-- Include Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+
+  <%- include('./partials/nav') %>
+
+  <div class="container mx-auto mt-8">
+    <form action="/blog" method="post" enctype="multipart/form-data" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <div class="mb-4">
+        <label for="coverImage" class="block text-gray-700 text-sm font-bold mb-2">Cover Image</label>
+        <input type="file" class="w-full border rounded-md py-2 px-3" id="coverImage" name="coverImage" aria-describedby="coverImage" />
+      </div>
+      <div class="mb-4">
+        <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+        <input type="text" class="w-full border rounded-md py-2 px-3" id="title" name="title" aria-describedby="title" />
+      </div>
+      <div class="mb-4">
+        <label for="body" class="block text-gray-700 text-sm font-bold mb-2">Body</label>
+        <textarea name="body" class="w-full border rounded-md py-2 px-3" id="body"></textarea>
+      </div>
+      <div class="mb-4">
+        <button class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Include Tailwind CSS (optional if not added via CDN) -->
+  <!-- <script src="path/to/tailwind.min.js"></script> -->
+
+  <%- include('./partials/scripts') %>
+</body>
+
+</html>

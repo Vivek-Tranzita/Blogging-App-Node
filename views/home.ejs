@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Amazing Homepage</title>
+
+  <!-- Include Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 3rem;
+    }
+
+    .card {
+      width: 18rem;
+      margin: 1rem;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      height: 12rem;
+      object-fit: cover;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('./partials/nav') %>
+
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <% blogs.forEach(blog => { %>
+      <div class="card">
+        <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="<%= blog.title %> Image" />
+        <div class="card-body">
+          <h5 class="card-title text-lg font-semibold"><%= blog.title %></h5>
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary mt-2">View</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <!-- Include Tailwind CSS (optional if not added via CDN) -->
+  <!-- <script src="path/to/tailwind.min.js"></script> -->
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>

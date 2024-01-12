@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Beautiful Blog</title>
+
+  <!-- Include Tailwind CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+
+  <%- include('./partials/nav') %>
+
+  <div class="container mx-auto mt-8">
+    <h1 class="text-3xl font-bold mb-4"><%= blog.title %></h1>
+    <img src="<%= blog.coverImageURL %>" class="w-full h-auto mb-6 rounded-lg" alt="<%= blog.title %> Cover Image" />
+    <pre class="whitespace-pre-wrap leading-relaxed text-gray-800"><%= blog.body %></pre>
+  </div>
+
+  <div class="container mx-auto mt-8 flex items-center">
+    <img src="<%= blog.createdBy.profileImageURL %>" width="50px" class="rounded-full mr-3" /> 
+    <p class="text-lg font-semibold"><%= blog.createdBy.fullName %></p>
+  </div>
+
+  <div class="container mx-auto mt-8">
+    <h1 class="text-2xl font-bold mb-4">Comments (<%= comments.length %>)</h1>
+
+    <% if (locals.user) { %>
+      <form action="/blog/comment/<%= blog._id %>" method="post" class="mb-6">
+        <div class="flex items-center mb-3">
+          <input
+            type="text"
+            name="content"
+            class="w-full px-4 py-2 border rounded-md mr-2 focus:outline-none"
+            placeholder="Enter your comment"
+          />
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none" type="submit">Add</button>
+        </div>
+      </form>
+    <% } %>
+
+    <div class="space-y-4">
+      <% comments.forEach(comment => { %>
+        <div class="flex items-center space-x-4 mb-12">
+          <img src="<%= comment.createdBy.profileImageURL %>" width="50px" class="rounded-full" />
+          <div>
+            <p class="text-lg font-semibold"><%= comment.createdBy.fullName %></p>
+            <p class="whitespace-pre-wrap text-gray-800 mb-12"><%= comment.content %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <!-- Include Tailwind CSS (optional if not added via CDN) -->
+  <!-- <script src="path/to/tailwind.min.js"></script> -->
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>
